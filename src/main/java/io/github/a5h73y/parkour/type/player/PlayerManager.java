@@ -1672,6 +1672,11 @@ public class PlayerManager extends AbstractPluginReceiver implements Initializab
 	 * @return player can join course
 	 */
 	public boolean canJoinCourse(Player player, Course course) {
+		/* Player is a member of a party and isn't the leader */
+		if (!Parkour.getInstance().getPartyService().canPlayGameAlertOrWarp(player)) {
+			return false;
+		}
+
 		/* World doesn't exist */
 		if (course.getCheckpoints().isEmpty()) {
 			TranslationUtils.sendTranslation("Error.UnknownWorld", player);

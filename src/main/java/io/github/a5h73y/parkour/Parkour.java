@@ -19,10 +19,7 @@ import io.github.a5h73y.parkour.listener.move.VehicleMoveListener;
 import io.github.a5h73y.parkour.other.AbstractPluginReceiver;
 import io.github.a5h73y.parkour.other.ParkourUpdater;
 import io.github.a5h73y.parkour.other.PluginBackupUtil;
-import io.github.a5h73y.parkour.plugin.BountifulApi;
-import io.github.a5h73y.parkour.plugin.EconomyApi;
-import io.github.a5h73y.parkour.plugin.PermissionVault;
-import io.github.a5h73y.parkour.plugin.PlaceholderApi;
+import io.github.a5h73y.parkour.plugin.*;
 import io.github.a5h73y.parkour.type.Initializable;
 import io.github.a5h73y.parkour.type.Teardownable;
 import io.github.a5h73y.parkour.type.admin.AdministrationManager;
@@ -49,6 +46,9 @@ import io.github.g00fy2.versioncompare.Version;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+
+import net.serble.serblenetworkplugin.API.IdService;
+import net.serble.serblenetworkplugin.API.PartyService;
 import org.bstats.bukkit.Metrics;
 import org.bstats.charts.SimplePie;
 import org.bstats.charts.SingleLineChart;
@@ -92,6 +92,8 @@ public class Parkour extends JavaPlugin {
     private EconomyApi economyApi;
     private PermissionVault permissionVault;
     private PlaceholderApi placeholderApi;
+    private SerbleIdApi idService;
+    private SerblePartyApi partyService;
 
     /**
      * Get the plugin's instance.
@@ -224,6 +226,8 @@ public class Parkour extends JavaPlugin {
         economyApi = new EconomyApi(this);
         permissionVault = new PermissionVault(this);
         placeholderApi = new PlaceholderApi(this);
+        idService = new SerbleIdApi(this);
+        partyService = new SerblePartyApi(this);
     }
 
     private void registerCommands() {
@@ -401,5 +405,13 @@ public class Parkour extends JavaPlugin {
 
     public PlaceholderApi getPlaceholderApi() {
         return placeholderApi;
+    }
+
+    public SerbleIdApi getIdService() {
+        return idService;
+    }
+
+    public SerblePartyApi getPartyService() {
+        return partyService;
     }
 }

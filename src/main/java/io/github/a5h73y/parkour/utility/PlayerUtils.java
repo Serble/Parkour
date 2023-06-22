@@ -4,6 +4,8 @@ import com.cryptomorin.xseries.XPotion;
 import io.github.a5h73y.parkour.Parkour;
 import io.github.a5h73y.parkour.type.player.session.ParkourSession;
 import java.util.UUID;
+
+import net.serble.serblenetworkplugin.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
@@ -208,6 +210,7 @@ public class PlayerUtils {
 
 	/**
 	 * The player's full UUID including hyphens.
+	 * This function also reverses Serble's profile ID back to a player ID.
 	 * @return player UUID including hyphens
 	 */
 	public static String padPlayerUuid(String playerId) {
@@ -216,7 +219,9 @@ public class PlayerUtils {
 		uuid.insert(16, "-");
 		uuid.insert(12, "-");
 		uuid.insert(8, "-");
-		return uuid.toString();
+		UUID uuidObject = UUID.fromString(uuid.toString());
+		uuidObject = Parkour.getInstance().getIdService().reverseGetIdOfPlayer(uuidObject);
+		return uuidObject.toString();
 	}
 
 	/**
