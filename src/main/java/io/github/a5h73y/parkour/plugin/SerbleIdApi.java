@@ -62,8 +62,16 @@ public class SerbleIdApi extends PluginWrapper {
 		return idService.getPlayerUuid(player);
 	}
 
+	public UUID getIdOfPlayer(OfflinePlayer player) {
+		return idService.getPlayerUuid(player.getUniqueId());
+	}
+
 	public UUID reverseGetIdOfPlayer(UUID profile) {
-		return idService.getPlayerFromProfile(profile);
+		UUID id = idService.getPlayerFromProfile(profile);
+		if (id == null) {
+			return profile;
+		}
+		return id;
 	}
 
 }

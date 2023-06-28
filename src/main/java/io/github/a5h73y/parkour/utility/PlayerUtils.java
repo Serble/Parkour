@@ -219,7 +219,14 @@ public class PlayerUtils {
 		uuid.insert(16, "-");
 		uuid.insert(12, "-");
 		uuid.insert(8, "-");
-		UUID uuidObject = UUID.fromString(uuid.toString());
+		UUID uuidObject;
+		try {
+			uuidObject = UUID.fromString(uuid.toString());
+		} catch (Exception e) {
+			Bukkit.getLogger().severe("Invalid UUID: " + uuid);
+			Bukkit.getLogger().severe("Original ID: " + playerId);
+			throw e;
+		}
 		uuidObject = Parkour.getInstance().getIdService().reverseGetIdOfPlayer(uuidObject);
 		return uuidObject.toString();
 	}

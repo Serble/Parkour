@@ -62,7 +62,7 @@ public class DatabaseManager extends CacheableParkourManager implements Initiali
      * @return player ID
      */
     public static String getPlayerId(@NotNull OfflinePlayer player) {
-        return Parkour.getInstance().getIdService().toString().replace("-", "");
+        return Parkour.getInstance().getIdService().getIdOfPlayer(player).toString().replace("-", "");
     }
 
     /**
