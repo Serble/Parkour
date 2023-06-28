@@ -231,6 +231,10 @@ public class ParkourCommands extends AbstractPluginReceiver implements CommandEx
                     return false;
                 }
 
+                if (!Parkour.getInstance().getPartyService().canPlayGameAlertOrWarp(player)) {
+                    return false;
+                }
+
                 parkour.getPlayerManager().joinCourse(player, args[1]);
                 break;
 

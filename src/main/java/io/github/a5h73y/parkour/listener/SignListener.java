@@ -197,6 +197,10 @@ public class SignListener extends AbstractPluginReceiver implements Listener {
                     return;
                 }
 
+                if (!Parkour.getInstance().getPartyService().canPlayGameAlertOrWarp(player)) {
+                    break;
+                }
+
                 parkour.getPlayerManager().joinCourse(player, lines[2]);
                 break;
 
