@@ -54,11 +54,6 @@
 			<id>minebench-repo</id>
 			<url>https://repo.minebench.de/</url>
 		</repository>
-		<!-- Serble Plugin -->
-		<repository>
-			<id>local-maven-repo</id>
-			<url>file://${project.basedir}/local-maven-repo</url>
-		</repository>
 	</repositories>
 
 	<dependencies>
@@ -177,10 +172,9 @@
 		</dependency>
 		<!-- Serble Plugin -->
 		<dependency>
-			<groupId>net.serble</groupId>
-			<artifactId>SerbleNetworkPlugin</artifactId>
-			<version>1.0.0</version>
-			<scope>provided</scope>
+			<groupId>net.serble.serblenetworkplugin</groupId>
+			<artifactId>serblenetworkplugin</artifactId>
+			<version>1.0-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 
